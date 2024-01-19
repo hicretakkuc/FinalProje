@@ -1,0 +1,59 @@
+---
+title: "Proje Rapor : Hicret Akkuç 180401062"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Q1 : Problem tanımı
+
+YummyNut isimli fıstık ezmesi üreten şirketimizin instagram hesabını canlandırmak amacıyla fıstık ezmesi ile yapılan pratik yemek tariflerinin videolarını hesabımızda paylaşmak istiyoruz.
+
+# Q2 : Proje Amacı
+
+Food.com Recipes and Interactions (<https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions?select=RAW_recipes.csv>) isimli dataseti kullanılarak 30 ve 30 dakikadan az süren tariflerin pratik yemek tarifleri olarak belirlenip bunlar içerisinden de fıstık ezmesi kullanılarak yapılan yemek tariflerine ulaşıp, bu tarifleri instagram hesabımızı canlandırmak için kullanmak istiyoruz.
+
+# Q3 : Veri seti keşifsel analizi
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Veri dosyasını internetten indir ve git repo'sunun içine commitle
+filename <- "RAW_recipes.csv"
+
+# Dosyayi ithal et
+library(readr)
+myDF <- read_csv(filename)
+```
+`
+
+Veri seti Kaggle web sitesinden indirilmiştir ve **readr::read_csv()** fonksiyonu kullanılarak **`r class(myDF)[[1]]`** tipinde bir değişkene ithal edilmiştir. Veri boyutları aşağıdaki gibidir :
+
+-   Satir sayisi : `r nrow(myDF)`
+-   Sütun sayisi : `r ncol(myDF)`
+
+Veri setinin ön görsellemesi aşağıda verilmiştir.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+myDF
+```
+Food.com sitesinden elde edilmiş olan veri seti incelendiğinde istenilen ihtiyaca yönelik olan sütunları name, tags, ve ingredients olarak belirledim. Bu veri sütunları arasında eksik değerler bulunuyor mu diye inceledim ve name sütununun 1 tane eksik değeri olduğunu görerek o satırı sildim. Görüldüğü üzere description sütununda da eksik veriler mevcut ama o sütundaki değişkenler bizi ilgilendirmediği için silmiyorum.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+#str(myDF)
+#veri setinde eksik veri var mı?
+sapply(myDF,function(x) sum(is.na(x)))
+# name'deki eksik veriyi görmek için
+#missing_indices <- which(is.na(myDF$name))
+#print(missing_indices)
+# name sütunu eksik değer içeren satırları çıkar
+cmyDF <- myDF[!is.na(myDF$name), ]
+```
+
+
+
+Tags sütunu içerisinde char tipinde bulunan "30-minutes-or-less" ve "15-minutes-or-less" etiketine sahip olan verileri filtreleyerek elde ettikten sonra bu verilerin ingredients sütunu içerisinde tipi char olan bilgilerden de "peanut butter" içeren verileri elde edeceğim.
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+testthat::test_file("Q3_tests_Hicret_Akkuç_180401062.R", SilentReporter)
+```
+
