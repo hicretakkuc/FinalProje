@@ -1,0 +1,10 @@
+---
+title: "Proje Rapor : Hicret Akkuç 180401062"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Q1 : Problem tanımı
+
+YummyNut isimli fıstık ezmesi üreten şirketimizin instagram hesabını canlandırmak amacıyla fıstık ezmesi ile yapılan pratik yemek tariflerinin videolarını hesabımızda paylaşmak istiyoruz.
