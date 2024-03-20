@@ -1,1 +1,1 @@
-# FinalProje
+# Food.com Recipes and Interactions (<https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions?select=RAW_recipes.csv>) isimli dataseti kullanılarak 30 ve 30 dakikadan az süren tariflerin pratik yemek tarifleri olarak belirlenip bunlar içerisinden de fıstık ezmesi kullanılarak yapılan yemek tariflerine ulaşılması ve bu tariflerin firmanın instagram hesaplarında satışları arttırmak amacıyla kullanılması
